@@ -1,0 +1,185 @@
+body{
+    margin: 0%;
+}
+.logo{
+    width: 100px;
+    height: auto;
+    padding-bottom: 10px;
+    padding-top: 7px;
+    padding-left: 2px;
+}
+.logo-nav i{
+    color: #14562a;
+    
+ cursor: pointer;
+}
+.logo-nav {
+    background-color: transparent;
+    border: none;
+ cursor: pointer;
+}
+
+nav {
+    width: calc(100vw - 560.5px);
+    height:70px ;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    opacity: 98%;
+    background-color: white;
+    padding-top: 1.5px;
+    padding: 0 270px;
+    z-index: 2;
+    border-bottom: 1px SOLID #14562a;
+    
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(3,331PX) ;
+    grid-template-rows: 370px 370px 370px ;
+    justify-content: center;
+   gap: 30PX;
+   padding-top: 100px;
+    
+ }
+ .grid{
+    border-radius: 2%;
+    height:350px ;
+    width:311px ;
+    border: 1px solid rgba(0,0,0,.03);
+    
+ }
+ .in{
+    color: gray;
+    font-size: large;
+    font-family:'roboto',Arial,sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+ }
+ .gridButton{
+    color: gray;
+    font-size: large;
+    font-family:'roboto',Arial,sans-serif;
+    display: flex;
+    align-items: center;
+ }
+
+ .grid img{
+    width:311PX ;
+    height:280PX ;
+    border-radius: 2% 2% 0 0;
+
+ }
+ .add{
+    background-color:#14562a;
+    border: none;
+    height: 30px;
+    width:30px ;
+    border-radius: 4px;
+    color: white;
+    font-size: 10px;
+    line-height: 10px;
+    letter-spacing: 0.4px;
+  font-weight: 600; 
+  cursor: pointer;
+  margin-left: 5px;
+ }
+ .text{
+    line-height: 1px;
+ }
+ .shop-cart{
+position: fixed;
+height: 100%;
+width: 400px;
+background-color: white;
+right: 0px;
+top: 0px;
+text-align: center;
+color: gray;
+font-size: large;
+font-family:'roboto',Arial,sans-serif;
+transform: translateX(100%);
+       transition: 0.5s;
+text-align: center;
+padding-left: 20px;
+border: #14562a solid 1px;
+overflow-y: scroll;
+scrollbar-color:  #14562a ;
+scrollbar-width: thin;
+ }
+ .box img{
+height: 200px;
+width: 200px;
+border-radius: 5px;
+ }
+.box{
+    display: flex;
+     justify-content: space-between;
+    align-items:center;
+ 
+ }
+ .box input{
+    width: 35PX;
+ }
+ .box i{
+   color: red;
+ }
+
+ .buy{
+    background-color: #14562a;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    width: 40px;
+    height:auto ;
+    width:100PX ;
+    font-size: medium;
+    cursor: pointer;
+    margin-bottom: 40px;
+ }
+ .close{
+    background-color: transparent;
+    color: red;
+   cursor: pointer;
+    border: none;
+   margin-left: 150px;
+   position: fixed;
+ }
+ .borderBottom{
+    border-bottom: 1px solid #14562a;
+    margin: 20px;
+ }
+ .fav i{
+    color: grey;;
+    font-size: large;
+ }
+ .fav {
+    background-color:transparent;
+    border: none;
+    height: 30px;
+    width:30px ;
+   
+    
+    font-size: 10px;
+    line-height: 10px;
+    letter-spacing: 0.4px;
+  font-weight: 600; 
+  cursor: pointer;
+  margin-left: 5px;
+ }
+ input[type="number"]{
+    -moz-appearance:textfield ;
+ }
+ input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance:none ;
+ }
+ .input{
+    display: flex;
+ }
+ .total{
+    display: flex;
+    justify-content: right;
+ }
+
