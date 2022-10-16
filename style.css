@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+html{
+    scroll-behavior: smooth;
+}
 body{
     margin: 0%;
+    font-family:'roboto',Arial,sans-serif;
 }
 .logo{
     width: 100px;
     height: auto;
-    padding-bottom: 10px;
-    padding-top: 7px;
-    padding-left: 2px;
+   
 }
 .logo-nav i{
     color: #14562a;
@@ -20,19 +23,17 @@ body{
 }
 
 nav {
-    width: calc(100vw - 560.5px);
+    width: calc(100vw );
     height:70px ;
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     position: fixed;
     opacity: 98%;
     background-color: white;
     padding-top: 1.5px;
-    padding: 0 270px;
     z-index: 2;
     border-bottom: 1px SOLID #14562a;
-    
 }
 .grid-container{
     display: grid;
@@ -169,6 +170,9 @@ border-radius: 5px;
   cursor: pointer;
   margin-left: 5px;
  }
+ .fav i:active{
+    font-size: medium;
+ }
  input[type="number"]{
     appearance:textfield ;
  }
@@ -182,4 +186,62 @@ border-radius: 5px;
     display: flex;
     justify-content: right;
  }
+ .choix{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 130px;
+   height: 100PX;
+   width: 100%;
+   font-family:'roboto',Arial,sans-serif;
+   text-align: center;
+   color: #14562a;
+ }
+ .choix img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+ }
+ .aj {
+padding-left: 10px
 
+
+ }
+
+ .choix img:hover{
+    border: #14562a 1px solid;
+ }
+ .choix div{
+    height: 120px;
+    width: 120px;
+ }
+ .home img{
+    width: 100%;
+    border-bottom: #14562a solid 1px;
+    opacity:80% ;
+ }
+ .home{
+    padding-top: 70px;
+    position: relative;
+    
+   
+ }
+ .home h1{
+    position: absolute;
+   bottom: 40%;
+   right:35%;
+   font-family: 'Poppins', sans-serif;
+   font-size: 50px;
+   color: white;
+   text-align: center;
+ }
+ .d{
+    display: none;
+    transition: 00.5s;
+ }
+ .f{
+    display: block;
+    transition: 00.5s;
+ }
+ 
+ 
