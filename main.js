@@ -2,11 +2,9 @@ let shopbtn=document.querySelector('.logo-nav');
 let shop=document.querySelector('.shop-cart');
 let closebtn=document.querySelector('.close');
 let favbtn=document.querySelectorAll('.fav');
-let addbtn=document.querySelectorAll('.add');
 var grid=document.querySelectorAll('.grid');
-let cartProduct=document.querySelector('.cart-product')
-let totalprice=document.querySelector('.totalprice')
 let buy=document.querySelector('.buy')
+
 
 for (var k = 0 ; k < favbtn.length; k++){
 grid[k].addEventListener('mouseover',function(){
@@ -22,12 +20,6 @@ grid[k].addEventListener('mouseout',function(){
     
 },true)}
 
-
-    
-
-
-
-
 //panier btn
 shopbtn.addEventListener('click',function(){
     shop.style.transform='translateX(0)';
@@ -37,126 +29,105 @@ closebtn.addEventListener('click',function(){
     shop.style.transform='translateX(100%)';
 });
 //fav btn
-for (var i = 0 ; i < favbtn.length; i++) {
-    favbtn[i].addEventListener('click',function(e){
-        let target=e.target;
-        if(target.style.color=='grey'){
-            target.style.color='red';
-        }
-        else{target.style.color='grey';}
-    }  ) ; 
- }
+favbtn.forEach((fav=>{
+    fav.addEventListener('click',function(){
+fav.classList.toggle('active');})
+
+
+}))
    
  //add btn
-     for (var i = 0 ; i < addbtn.length; i++) {
- addbtn[i].addEventListener('click',function(){
-     
-    shop.style.transform='translateX(0)';
-    let product=this.parentElement.parentElement.parentElement;
-    let name=product.querySelector('.name').innerHTML;
-    let price=product.querySelector('.price').innerHTML;
-    let img=product.querySelector('.img').src;
-    let box=document.createElement('div');
-    
-    box.classList.add('box');
-
-    box.innerHTML =' <img src='+img +' alt="" class="image"><div class="detail"><h3 class="names">'+name +'</h3><h5 class="price">'+ price +'</h5><div class="input"> <button class="down"><i class="fa-solid fa-minus"></i></button><input type="number" name="value" value="1" min="1"id="quantity"><button class="up"><i class="fa-solid fa-plus"></i></button></div> </div><i class="fa-solid fa-trash dlt"></i>'
-
-    if(document.querySelector('.names')!= null){
-    let cartelement =document.querySelectorAll('.names')
-    
-    for (var m = 0 ; m < cartelement.length; m++){
-        var a=0
-    if(cartelement[m].innerText==name){
-        alert('already in your cart ')
-        a=1;
-    }
-    
-    }if(a==0) {
-        cartProduct.appendChild(box)
-        var rprice=Number(price.slice(0, -1));
-       
-        var rtotal=Number( totalprice.innerText.slice(0, -1))
-        
-         rtotal=rtotal+rprice 
-         
-         totalprice.innerHTML=rtotal+'$';}
-        }
-    else{
-        cartProduct.appendChild(box)
-        let rprice=Number(price.slice(0, -1));
-        var rtotal=Number( totalprice.innerText.slice(0, -1))
-         rtotal=rtotal+rprice  
-         totalprice.innerHTML=rtotal+'$';}
-          
-         
-        
-//sup btn
-    let dltbtn=document.getElementsByClassName('dlt');
-    for (var j = 0 ; j < (dltbtn.length); j++){
-        dltbtn[j].addEventListener('click',function(){
-         let rprice =this.parentElement.querySelector('.price').innerText.slice(0, -1);
-       let qnt=this.parentElement.querySelector('input').getAttribute('value');
-            rtotal=rtotal-rprice 
-            totalprice.innerHTML=(rtotal*qnt)+'$';
-            this.parentElement.remove()
-         })
-    }
-    
-    //quantity button
-    const plusbtn = document.getElementsByClassName("up");
-         const moinsbtn = document.getElementsByClassName("down");
-         for (let m = 0; m < plusbtn.length; m++) {
-
-           plusbtn[m].addEventListener("click", function (event) {
-        
-
-          console.log(this.parentElement)
-            
-            let input =this.parentElement.querySelector("#quantity");
-             input.setAttribute(
-               "value",
-               Number(input.getAttribute("value")) + 1 //should have used getAttribute and setAttribute
-             );
-             totalprice.innerHTML=(rtotal*Number(input.getAttribute("value")))+'$'
-             
-           });
-           moinsbtn[m].addEventListener("click", function () {
-          
-            let input =this.parentElement.querySelector("#quantity");
-             if(Number(input.getAttribute("value"))>1){
-             input.setAttribute(
-               "value",
-               Number(input.getAttribute("value")) - 1 //should have used getAttribute and setAttribute
-               
-             );
-             totalprice.innerHTML=(rtotal*Number(input.getAttribute("value")))+'$'
-             ;}
-             
-             
-           });
-           
-         }
-  
-   ;})}
-      //buy
-      buy.addEventListener('click',function(){
-     elm=this.parentElement.querySelectorAll('.box');
-     console.log(elm);
-       if(elm.length!=0){
-        alert("successful purchase")
-        for (var s = 0 ; s < (elm.length); s++){
-            elm[s].remove();
-            let ttl=document.querySelector('.totalprice')
-            ttl.innerHTML=0+'$'
-            
-           }
-           
-       }
-       else{alert("add product")}
-      })
    
-
-
+ const modal = document.querySelector(".cart-product");
+ let cartItems = [];
+ 
+ const addbtns=document.querySelectorAll('.add');
+ addbtns.forEach((addbtn) => {
   
+   addbtn.addEventListener("click", (event) => {
+     let cartItem = {
+       title: event.target.parentNode.parentNode.querySelector(".name").innerText,
+       price:Number(event.target.parentNode.parentNode.querySelector(".price").innerText.slice(0,-1)),
+       image:event.target.parentNode.parentNode.parentNode.querySelector("img").src,
+       quantity: 1,
+     };
+     if (cartItems.find((e) => e.title === cartItem.title)) {
+       alert("Item already in your cart!");
+     } else {
+        let cnt=document.querySelector('.nav-droit p')
+        cnt.innerText=Number(cnt.innerText)+1;
+       cartItems.push(cartItem);
+       modal.innerHTML +=' <div class="box"><img src='+cartItem.image +' alt="" class="image"><div class="detail"><h3 class="names">'+cartItem.title +'</h3><h5 class="price">'+ cartItem.price+"$" +'</h5><div class="input"> <i class="fa-solid fa-minus"></i><p>'+cartItem.quantity+'</p><i class="fa-solid fa-plus"></i></div> </div><i class="fa-solid fa-trash dlt"></i></div>'
+       const pluses = document.querySelectorAll(".fa-plus");
+
+       pluses.forEach((plus) => {
+         plus.addEventListener("click", function (event) {
+            event.target.parentNode.parentNode.querySelector("p").innerText =
+             Number(event.target.parentNode.parentNode.querySelector("p").innerText) + 1;
+             let total=document.querySelector('.totalprice');
+             let prix=Number(event.target.parentNode.parentNode.querySelector('.price').innerText.slice(0,-1))
+             
+             total.innerHTML=(Number(total.innerHTML.slice(0,-1))+prix)+'$'
+         });
+       });
+       const minuses = document.querySelectorAll(".fa-minus");
+       minuses.forEach((plus) => {
+         plus.addEventListener("click", function (event) {
+           if (event.target.parentNode.parentNode.querySelector("p").innerText > 1) {
+             event.target.parentNode.parentNode.querySelector("p").innerText =
+               Number(event.target.parentNode.parentNode.querySelector("p").innerText) - 1;
+               let total=document.querySelector('.totalprice');
+               let prix=Number(event.target.parentNode.parentNode.querySelector('.price').innerText.slice(0,-1))
+               total.innerHTML=(Number(total.innerHTML.slice(0,-1))-prix)+'$'
+           }
+         });
+       });
+       let total=document.querySelector('.totalprice');
+     total.innerHTML=(Number(total.innerHTML.slice(0,-1))+(cartItem.price*cartItem.quantity))+'$'
+      //dlt btn
+  const dltbtns=document.querySelectorAll('.dlt');
+  dltbtns.forEach((dltbtn)=>{
+dltbtn.addEventListener('click',function(event){
+    let cnt=document.querySelector('.nav-droit p')
+    cnt.innerText=Number(cnt.innerText)-1;
+    let total=document.querySelector('.totalprice');
+    let prix=Number(event.target.parentNode.querySelector('.price').innerText.slice(0,-1))
+    let qnt=Number(event.target.parentNode.querySelector('p').innerText)
+    console.log(qnt,prix);
+    total.innerHTML=(Number(total.innerHTML.slice(0,-1))-(prix*qnt))+'$'
+
+  let i=cartItems.indexOf(cartItems.find((e) => e.title ===event.target.parentNode.querySelector('.names').innerText));
+  cartItems.splice(i,1)
+    
+ event.target.parentNode.remove();
+
+})
+
+ 
+
+  })
+     } 
+
+    
+    
+   });
+ });
+ //buy
+ buy.addEventListener('click',function(){
+    let cnt=document.querySelector('.nav-droit p')
+    cnt.innerText='';
+    elm=this.parentElement.querySelectorAll('.box');
+      if(elm.length!=0){
+       alert("successful purchase")
+       for (var s = 0 ; s < (elm.length); s++){
+           elm[s].remove();
+           let ttl=document.querySelector('.totalprice')
+           ttl.innerHTML=0+'$'
+           cartItems = [];
+          }
+          
+      }
+      else{alert("add product")}
+     })
+     
   

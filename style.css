@@ -86,6 +86,9 @@ nav {
   font-weight: 600; 
   cursor: pointer;
   margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  .text{
     line-height: 1px;
@@ -170,17 +173,22 @@ border-radius: 5px;
   cursor: pointer;
   margin-left: 5px;
  }
+ .active i{
+   color: red;
+
+ }
  .fav i:active{
     font-size: medium;
  }
- input[type="number"]{
-    appearance:textfield ;
- }
- input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{
-   appearance:none ;
- }
+.input p{
+   padding:0 5px;
+}
  .input{
     display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   
  }
  .total{
     display: flex;
@@ -244,4 +252,12 @@ padding-left: 10px
     transition: 00.5s;
  }
  
+.nav-droit{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family:'Poppins', sans-serif;
+   color: #14562a;
+   transition: 0.5s;
+} 
  
