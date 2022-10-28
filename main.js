@@ -112,6 +112,7 @@ dltbtn.addEventListener('click',function(event){
     
    });
  });
+ 
  //buy
  buy.addEventListener('click',function(){
     let cnt=document.querySelector('.nav-droit p')

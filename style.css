@@ -89,6 +89,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  
  }
  .text{
     line-height: 1px;
@@ -177,6 +178,11 @@ border-radius: 5px;
    color: red;
 
  }
+ .add:active{
+   font-size: medium;
+   
+ }
+ 
  .fav i:active{
     font-size: medium;
  }
